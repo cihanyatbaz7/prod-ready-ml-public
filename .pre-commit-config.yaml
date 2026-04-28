@@ -20,6 +20,6 @@ repos:
     - id: ruff-format
       types_or: [ python, pyi ]
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: ''  # Use the sha / tag you want to point at
+  rev: v1.20.2
   hooks:
     - id: mypy
