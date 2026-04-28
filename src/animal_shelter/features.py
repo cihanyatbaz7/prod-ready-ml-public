@@ -87,7 +87,7 @@ def get_sex(sex_upon_outcome: pd.Series) -> pd.Series:
 
 
 def get_neutered(sex_upon_outcome: pd.Series) -> pd.Series:
-    """Determine if an animal was intact or not.
+    """Determine if an animal was neutured or not.
     Parameters
     ----------
     sex_upon_outcome : pandas.Series
