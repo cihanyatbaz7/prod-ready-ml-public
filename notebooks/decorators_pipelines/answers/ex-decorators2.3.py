@@ -1,7 +1,7 @@
 
 def time_it(function):
     import time
-    
+
     def wrapper(*args):
         t1 = time.time()
         result = function(*args)
@@ -12,7 +12,7 @@ def time_it(function):
     return wrapper
 
 def is_prime(function):
-    
+
     def wrapper(*args):
         result = function(*args)
         if len(result) == 2:
@@ -25,9 +25,9 @@ def is_prime(function):
 @is_prime
 @time_it
 def get_factors(n):
-    "Return the factors of n." 
+    "Return the factors of n."
     factors = [x for x in range(1, (n+1))
-               if n % x == 0] 
+               if n % x == 0]
     return factors
 
 get_factors(1254739)

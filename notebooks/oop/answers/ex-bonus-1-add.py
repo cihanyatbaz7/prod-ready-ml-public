@@ -9,22 +9,22 @@ class Deck:
             for rank in self.ranks
         ]
         self.dealt_cards = []
-   
+
     def __len__(self):
         return len(self.cards)
-        
+
     def __str__(self):
         return f'Deck(suits={self.suits}, ranks={self.ranks})'
-    
+
     def __getitem__(self, position):
         return self.cards[position]
-    
+
     def __setitem__(self, ind, val):
         self.cards[ind] = val
-    
+
     def __add__(self, other):
         return self.cards + other.cards
-    
+
     def deal(self):
         return self.cards.pop()
 
