@@ -26,6 +26,7 @@ dev = [
     "pre-commit>=4.6.0",
     "pytest>=9.0.3",
     "ruff>=0.15.12",
+    "scikit-learn-stubs>=0.0.3",
 ]
 
 [tool.ruff.lint]
@@ -35,3 +36,10 @@ extend-select = [
   "N",  # PEP8 names
   "I"  # isort
 ]
+
+[tool.mypy]
+python_version = "3.13"
+
+[[tool.mypy.overrides]]
+module = ["joblib"]
+ignore_missing_imports = true
