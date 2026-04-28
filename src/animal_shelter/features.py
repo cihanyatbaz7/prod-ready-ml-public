@@ -1,19 +1,23 @@
+"""Create features."""
+
 import numpy as np
 import pandas as pd
 
 
-def add_features(df):
+def add_features(df: pd.DataFrame) -> pd.DataFrame:
     """Add some features to our data.
+
     Parameters
     ----------
     df : pandas.DataFrame
         DataFrame with data (see load_data)
+
     Returns
     -------
     with_features : pandas.DataFrame
         DataFrame with some column features added
-    """
 
+    """
     # check animal type
     df["is_dog"] = _check_is_dog(df["animal_type"])
 
@@ -35,16 +39,19 @@ def add_features(df):
     return df.copy()
 
 
-def _check_is_dog(animal_type):
+def _check_is_dog(animal_type: pd.Series) -> pd.Series:
     """Check if the animal is a dog, otherwise return False.
+
     Parameters
     ----------
     animal_type : pandas.Series
         Type of animal
+
     Returns
     -------
     result : pandas.Series
         Dog or not
+
     """
     # Check if it's either a cat or a dog.
     is_cat_dog = animal_type.str.lower().isin(["dog", "cat"])
@@ -55,33 +62,37 @@ def _check_is_dog(animal_type):
     return is_dog
 
 
-def _check_has_name(name):
+def _check_has_name(name: pd.Series) -> pd.Series:
     """Check if the animal is not called 'unknown'.
+
     Parameters
     ----------
     name : pandas.Series
         Animal name
+
     Returns
     -------
     result : pandas.Series
         Unknown or not.
-    """
 
+    """
     return name.str.lower() != "unknown"
 
 
-def _get_sex(sex_upon_outcome):
+def _get_sex(sex_upon_outcome: pd.Series) -> pd.Series:
     """Determine if the sex was 'Male', 'Female' or unknown.
+
     Parameters
     ----------
     sex_upon_outcome : pandas.Series
         Sex and fixed state when coming in
+
     Returns
     -------
     sex : pandas.Series
         Sex when coming in
-    """
 
+    """
     sex = pd.Series("unknown", index=sex_upon_outcome.index)
 
     sex.loc[sex_upon_outcome.str.endswith("Female")] = "female"
@@ -90,16 +101,19 @@ def _get_sex(sex_upon_outcome):
     return sex
 
 
-def _get_neutered(sex_upon_outcome):
+def _get_neutered(sex_upon_outcome: pd.Series) -> pd.Series:
     """Determine if an animal was intact or not.
+
     Parameters
     ----------
     sex_upon_outcome : pandas.Series
         Sex and fixed state when coming in
+
     Returns
     -------
     sex : pandas.Series
         Intact, fixed or unknown
+
     """
     # Check if neutered.
     neutered = sex_upon_outcome.str.lower()
@@ -112,46 +126,50 @@ def _get_neutered(sex_upon_outcome):
     return neutered
 
 
-def _get_hair_type(breed):
+def _get_hair_type(breed: pd.Series) -> pd.Series:
     """Get hair type of a breed.
+
     Parameters
     ----------
     breed : pandas.Series
         Breed of animal
+
     Returns
     -------
     hair_type : pandas.Series
         Hair type
+
     """
+    hair_type = breed.str.lower()
+    valid_hair_types = ["shorthair", "medium hair", "longhair"]
 
-    hairType = breed.str.lower()
-    Valid_hair_types = ["shorthair", "medium hair", "longhair"]
+    for hair in valid_hair_types:
+        is_hair_type = hair_type.str.contains(hair)
+        hair_type[is_hair_type] = hair
 
-    for hair in Valid_hair_types:
-        is_hair_type = hairType.str.contains(hair)
-        hairType[is_hair_type] = hair
+    hair_type[~hair_type.isin(valid_hair_types)] = "unknown"
 
-    hairType[~hairType.isin(Valid_hair_types)] = "unknown"
-
-    return hairType
+    return hair_type
 
 
-def _compute_days_upon_outcome(age_upon_outcome):
+def _compute_days_upon_outcome(age_upon_outcome: pd.Series) -> pd.Series:
     """Compute age in days upon outcome.
+
     Parameters
     ----------
     age_upon_outcome : pandas.Series
         Age as string
+
     Returns
     -------
     days_upon_outcome : pandas.Series
         Age in days
-    """
 
-    Split_Age = age_upon_outcome.str.split()
-    time = Split_Age.apply(lambda x: x[0] if x[0] != "Unknown" else np.nan)
-    period = Split_Age.apply(lambda x: x[1] if x[0] != "Unknown" else None)
-    period_Mapping = {
+    """
+    split_age = age_upon_outcome.str.split()
+    time = split_age.apply(lambda x: x[0] if x[0] != "Unknown" else np.nan)
+    period = split_age.apply(lambda x: x[1] if x[0] != "Unknown" else None)
+    period_mapping = {
         "year": 365,
         "years": 365,
         "weeks": 7,
@@ -161,6 +179,6 @@ def _compute_days_upon_outcome(age_upon_outcome):
         "days": 1,
         "day": 1,
     }
-    days_upon_outcome = time.astype(float) * period.map(period_Mapping)
+    days_upon_outcome = time.astype(float) * period.map(period_mapping)
 
     return days_upon_outcome
