@@ -2,9 +2,6 @@ name: pre-commit
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
 
 jobs:
   pre-commit:
@@ -21,7 +18,8 @@ jobs:
 
       - name: Install dependencies
         run: uv sync
+        working-directory: src
 
       - name: Run pre-commit
-        run: uv run pre-commit run --all-files
+        run: uv run pre-commit run --files $(git ls-files .)
         working-directory: src
