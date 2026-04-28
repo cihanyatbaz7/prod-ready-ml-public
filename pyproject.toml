@@ -18,8 +18,13 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "jupyter>=1.1.1",
-    "pre-commit>=4.6.0",
+    "pre-commit>=4.0.0",
     "ruff>=0.15.12",
+]
+
+[tool.ruff]
+exclude = [
+    "notebooks",
 ]
 
 [tool.ruff.lint]
@@ -31,4 +36,4 @@ extend-select = [
 ]
 
 [tool.ruff.lint.pydocstyle]
-convention = "numpy"  # matches the docstring style your training already uses
+convention = "numpy"
