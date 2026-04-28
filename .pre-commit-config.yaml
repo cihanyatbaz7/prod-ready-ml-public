@@ -27,3 +27,11 @@ repos:
         pass_filenames: false
         always_run: true
         types: [python]
+
+      - id: mypy
+        name: mypy (local)
+        entry: uv run mypy src/
+        language: system
+        pass_filenames: false
+        always_run: true
+        types: [python]
