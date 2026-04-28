@@ -2,9 +2,12 @@ version = 1
 revision = 3
 requires-python = ">=3.13"
 resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.15' and sys_platform == 'win32'",
+    "python_full_version == '3.14.*' and sys_platform == 'win32'",
+    "python_full_version >= '3.15' and sys_platform == 'emscripten'",
+    "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
+    "python_full_version >= '3.15' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version == '3.14.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
     "python_full_version < '3.14' and sys_platform == 'win32'",
     "python_full_version < '3.14' and sys_platform == 'emscripten'",
     "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
@@ -21,6 +24,8 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "jupyter" },
+    { name = "mypy" },
+    { name = "pandas-stubs" },
     { name = "pre-commit" },
     { name = "ruff" },
 ]
@@ -31,6 +36,8 @@ requires-dist = [{ name = "pandas", specifier = ">=3.0.2" }]
 [package.metadata.requires-dev]
 dev = [
     { name = "jupyter", specifier = ">=1.1.1" },
+    { name = "mypy", specifier = ">=1.20.2" },
+    { name = "pandas-stubs", specifier = ">=3.0.0.260204" },
     { name = "pre-commit", specifier = ">=4.6.0" },
     { name = "ruff", specifier = ">=0.15.12" },
 ]
@@ -827,6 +834,53 @@ wheels = [
 ]
 
 [[package]]
+name = "librt"
+version = "0.9.0"
+source = { registry = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/security-insights/pypi/simple/" }
+sdist = { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0.tar.gz", hash = "sha256:a0951822531e7aee6e0dfb556b30d5ee36bbe234faf60c20a16c01be3530869d" }
+wheels = [
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:f29b68cd9714531672db62cc54f6e8ff981900f824d13fa0e00749189e13778e" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:7d5c8a5929ac325729f6119802070b561f4db793dffc45e9ac750992a4ed4d22" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:756775d25ec8345b837ab52effee3ad2f3b2dfd6bbee3e3f029c517bd5d8f05a" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:2b8f5d00b49818f4e2b1667db994488b045835e0ac16fe2f924f3871bd2b8ac5" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:c81aef782380f0f13ead670aae01825eb653b44b046aa0e5ebbb79f76ed4aa11" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:66b58fed90a545328e80d575467244de3741e088c1af928f0b489ebec3ef3858" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:e78fb7419e07d98c2af4b8567b72b3eaf8cb05caad642e9963465569c8b2d87e" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-musllinux_1_2_i686.whl", hash = "sha256:2c3786f0f4490a5cd87f1ed6cefae833ad6b1060d52044ce0434a2e85893afd0" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-musllinux_1_2_riscv64.whl", hash = "sha256:8494cfc61e03542f2d381e71804990b3931175a29b9278fdb4a5459948778dc2" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:07cf11f769831186eeac424376e6189f20ace4f7263e2134bdb9757340d84d4d" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-win32.whl", hash = "sha256:850d6d03177e52700af605fd60db7f37dcb89782049a149674d1a9649c2138fd" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-win_amd64.whl", hash = "sha256:a5af136bfba820d592f86c67affcef9b3ff4d4360ac3255e341e964489b48519" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp313-cp313-win_arm64.whl", hash = "sha256:4c4d0440a3a8e31d962340c3e1cc3fc9ee7febd34c8d8f770d06adb947779ea5" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-macosx_10_13_x86_64.whl", hash = "sha256:3f05d145df35dca5056a8bc3838e940efebd893a54b3e19b2dda39ceaa299bcb" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:1c587494461ebd42229d0f1739f3aa34237dd9980623ecf1be8d3bcba79f4499" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:b0a2040f801406b93657a70b72fa12311063a319fee72ce98e1524da7200171f" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:f38bc489037eca88d6ebefc9c4d41a4e07c8e8b4de5188a9e6d290273ad7ebb1" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:f3fd278f5e6bf7c75ccd6d12344eb686cc020712683363b66f46ac79d37c799f" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:fcbdf2a9ca24e87bbebb47f1fe34e531ef06f104f98c9ccfc953a3f3344c567a" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:e306d956cfa027fe041585f02a1602c32bfa6bb8ebea4899d373383295a6c62f" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-musllinux_1_2_i686.whl", hash = "sha256:465814ab157986acb9dfa5ccd7df944be5eefc0d08d31ec6e8d88bc71251d845" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-musllinux_1_2_riscv64.whl", hash = "sha256:703f4ae36d6240bfe24f542bac784c7e4194ec49c3ba5a994d02891649e2d85b" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:3be322a15ee5e70b93b7a59cfd074614f22cc8c9ff18bd27f474e79137ea8d3b" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-win32.whl", hash = "sha256:b8da9f8035bb417770b1e1610526d87ad4fc58a2804dc4d79c53f6d2cf5a6eb9" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-win_amd64.whl", hash = "sha256:b8bd70d5d816566a580d193326912f4a76ec2d28a97dc4cd4cc831c0af8e330e" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314-win_arm64.whl", hash = "sha256:fc5758e2b7a56532dc33e3c544d78cbaa9ecf0a0f2a2da2df882c1d6b99a317f" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-macosx_10_13_x86_64.whl", hash = "sha256:f24b90b0e0c8cc9491fb1693ae91fe17cb7963153a1946395acdbdd5818429a4" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:3fe56e80badb66fdcde06bef81bbaa5bfcf6fbd7aefb86222d9e369c38c6b228" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:527b5b820b47a09e09829051452bb0d1dd2122261254e2a6f674d12f1d793d54" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:7d429bdd4ac0ab17c8e4a8af0ed2a7440b16eba474909ab357131018fe8c7e71" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:7202bdcac47d3a708271c4304a474a8605a4a9a4a709e954bf2d3241140aa938" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:c0d620e74897f8c2613b3c4e2e9c1e422eb46d2ddd07df540784d44117836af3" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:d69fc39e627908f4c03297d5a88d9284b73f4d90b424461e32e8c2485e21c283" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-musllinux_1_2_i686.whl", hash = "sha256:c2640e23d2b7c98796f123ffd95cf2022c7777aa8a4a3b98b36c570d37e85eee" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-musllinux_1_2_riscv64.whl", hash = "sha256:451daa98463b7695b0a30aa56bf637831ea559e7b8101ac2ef6382e8eb15e29c" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:928bd06eca2c2bbf4349e5b817f837509b0604342e65a502de1d50a7570afd15" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-win32.whl", hash = "sha256:a9c63e04d003bc0fb6a03b348018b9a3002f98268200e22cc80f146beac5dc40" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-win_amd64.whl", hash = "sha256:f162af66a2ed3f7d1d161a82ca584efd15acd9c1cff190a373458c32f7d42118" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/librt/0.9/librt-0.9.0-cp314-cp314t-win_arm64.whl", hash = "sha256:a4b25c6c25cac5d0d9d6d6da855195b254e0021e513e0249f0e3b444dc6e0e61" },
+]
+
+[[package]]
 name = "markupsafe"
 version = "3.0.3"
 source = { registry = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/security-insights/pypi/simple/" }
@@ -897,6 +951,51 @@ source = { registry = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9
 sdist = { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mistune/3.2/mistune-3.2.0.tar.gz", hash = "sha256:708487c8a8cdd99c9d90eb3ed4c3ed961246ff78ac82f03418f5183ab70e398a" }
 wheels = [
     { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mistune/3.2/mistune-3.2.0-py3-none-any.whl", hash = "sha256:febdc629a3c78616b94393c6580551e0e34cc289987ec6c35ed3f4be42d0eee1" },
+]
+
+[[package]]
+name = "mypy"
+version = "1.20.2"
+source = { registry = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/security-insights/pypi/simple/" }
+dependencies = [
+    { name = "librt", marker = "platform_python_implementation != 'PyPy'" },
+    { name = "mypy-extensions" },
+    { name = "pathspec" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2.tar.gz", hash = "sha256:e8222c26daaafd9e8626dec58ae36029f82585890589576f769a650dd20fd665" }
+wheels = [
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:edfbfca868cdd6bd8d974a60f8a3682f5565d3f5c99b327640cedd24c4264026" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:e2877a02380adfcdbc69071a0f74d6e9dbbf593c0dc9d174e1f223ffd5281943" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:7488448de6007cd5177c6cea0517ac33b4c0f5ee9b5e9f2be51ce75511a85517" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:bb9c2fa06887e21d6a3a868762acb82aec34e2c6fd0174064f27c93ede68ad15" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:9d56a78b646f2e3daa865bc70cd5ec5a46c50045801ca8ff17a0c43abc97e3ee" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp313-cp313-win_amd64.whl", hash = "sha256:2a4102b03bb7481d9a91a6da8d174740c9c8c4401024684b9ca3b7cc5e49852f" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp313-cp313-win_arm64.whl", hash = "sha256:a95a9248b0c6fd933a442c03c3b113c3b61320086b88e2c444676d3fd1ca3330" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:419413398fe250aae057fd2fe50166b61077083c9b82754c341cf4fd73038f30" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:e73c07f23009962885c197ccb9b41356a30cc0e5a1d0c2ea8fd8fb1362d7f924" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:0c64e5973df366b747646fc98da921f9d6eba9716d57d1db94a83c026a08e0fb" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:5a65aa591af023864fd08a97da9974e919452cfe19cb146c8a5dc692626445dc" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:4fef51b01e638974a6e69885687e9bd40c8d1e09a6cd291cca0619625cf1f558" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314-win_amd64.whl", hash = "sha256:913485a03f1bcf5d279409a9d2b9ed565c151f61c09f29991e5faa14033da4c8" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314-win_arm64.whl", hash = "sha256:c3bae4f855d965b5453784300c12ffc63a548304ac7f99e55d4dc7c898673aa3" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314t-macosx_10_15_x86_64.whl", hash = "sha256:2de3dcea53babc1c3237a19002bc3d228ce1833278f093b8d619e06e7cc79609" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:52b176444e2e5054dfcbcb8c75b0b719865c96247b37407184bbfca5c353f2c2" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:688c3312e5dadb573a2c69c82af3a298d43ecf9e6d264e0f95df960b5f6ac19c" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:29752dbbf8cc53f89f6ac096d363314333045c257c9c75cbd189ca2de0455744" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:803203d2b6ea644982c644895c2f78b28d0e208bba7b27d9b921e0ec5eb207c6" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314t-win_amd64.whl", hash = "sha256:9bcb8aa397ff0093c824182fd76a935a9ba7ad097fcbef80ae89bf6c1731d8ec" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-cp314-cp314t-win_arm64.whl", hash = "sha256:e061b58443f1736f8a37c48978d7ab581636d6ab03e3d4f99e3fa90463bb9382" },
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy/1.20.2/mypy-1.20.2-py3-none-any.whl", hash = "sha256:a94c5a76ab46c5e6257c7972b6c8cff0574201ca7dc05647e33e795d78680563" },
+]
+
+[[package]]
+name = "mypy-extensions"
+version = "1.1.0"
+source = { registry = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/security-insights/pypi/simple/" }
+sdist = { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy-extensions/1.1/mypy_extensions-1.1.0.tar.gz", hash = "sha256:52e68efc3284861e772bbcd66823fde5ae21fd2fdb51c62a211403730b916558" }
+wheels = [
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/mypy-extensions/1.1/mypy_extensions-1.1.0-py3-none-any.whl", hash = "sha256:1be4cccdb0f2482337c4743e60421de3a356cd97508abadd57d47403e94f5505" },
 ]
 
 [[package]]
@@ -1104,6 +1203,18 @@ wheels = [
 ]
 
 [[package]]
+name = "pandas-stubs"
+version = "3.0.0.260204"
+source = { registry = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/security-insights/pypi/simple/" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/pandas-stubs/3.0.0.260204/pandas_stubs-3.0.0.260204.tar.gz", hash = "sha256:bf9294b76352effcffa9cb85edf0bed1339a7ec0c30b8e1ac3d66b4228f1fbc3" }
+wheels = [
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/pandas-stubs/3.0.0.260204/pandas_stubs-3.0.0.260204-py3-none-any.whl", hash = "sha256:5ab9e4d55a6e2752e9720828564af40d48c4f709e6a2c69b743014a6fcb6c241" },
+]
+
+[[package]]
 name = "pandocfilters"
 version = "1.5.1"
 source = { registry = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/security-insights/pypi/simple/" }
@@ -1119,6 +1230,15 @@ source = { registry = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9
 sdist = { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/parso/0.8.6/parso-0.8.6.tar.gz", hash = "sha256:2b9a0332696df97d454fa67b81618fd69c35a7b90327cbe6ba5c92d2c68a7bfd" }
 wheels = [
     { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/parso/0.8.6/parso-0.8.6-py2.py3-none-any.whl", hash = "sha256:2c549f800b70a5c4952197248825584cb00f033b29c692671d3bf08bf380baff" },
+]
+
+[[package]]
+name = "pathspec"
+version = "1.1.1"
+source = { registry = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/security-insights/pypi/simple/" }
+sdist = { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/pathspec/1.1.1/pathspec-1.1.1.tar.gz", hash = "sha256:17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a" }
+wheels = [
+    { url = "https://pkgs.dev.azure.com/ETO-CICD/65a47aaf-555c-4b27-b9fd-66c9a3b08e2d/_packaging/829c8944-004b-496d-b0a2-7817e90a3318/pypi/download/pathspec/1.1.1/pathspec-1.1.1-py3-none-any.whl", hash = "sha256:a00ce642f577bf7f473932318056212bc4f8bfdf53128c78bbd5af0b9b20b189" },
 ]
 
 [[package]]
