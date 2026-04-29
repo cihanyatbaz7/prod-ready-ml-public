@@ -35,3 +35,10 @@ repos:
         pass_filenames: false
         always_run: true
         types: [python]
+
+      - id: pytest
+        name: pytest (local)
+        entry: uv run pytest
+        language: system
+        pass_filenames: false
+        always_run: true
