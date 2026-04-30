@@ -2,6 +2,8 @@
 
 # Production Ready Machine Learning
 
+[![CI pipeline](https://github.com/cihanyatbaz7/prod-ready-ml-public/actions/workflows/ci.yaml/badge.svg)](https://github.com/cihanyatbaz7/prod-ready-ml-public/actions/workflows/ci.yaml)
+
 Hi! 👋🏻
 
 This repository contains the material needed for the **Production Ready Machine Learning** training.
