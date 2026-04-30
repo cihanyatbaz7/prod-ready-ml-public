@@ -2,7 +2,7 @@
 
 import numpy as np
 import pandas as pd
-
+import logging
 
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
     """Add some features to our data.
@@ -18,21 +18,29 @@ def add_features(df: pd.DataFrame) -> pd.DataFrame:
         DataFrame with some column features added
 
     """
+    logger = logging.getLogger("animal_shelter")
+
+    logger.info("Create animal type column")
     # check animal type
     df["is_dog"] = _check_is_dog(df["animal_type"])
 
+    logger.info("Create has name column")
     # check if it has a name.
     df["has_name"] = _check_has_name(df["name"])
 
+    logger.info("Create sex column")
     # get sex
     df["sex"] = _get_sex(df["sex_upon_outcome"])
 
+    logger.info("Create neutered column")
     # Check if neutered.
     df["neutered"] = _get_neutered(df["sex_upon_outcome"])
 
+    logger.info("Create hair type column")
     # Get hair type.
-    df["hair_type"] = _get_sex(df["breed"])
+    df["hair_type"] = _get_hair_type(df["breed"])
 
+    logger.info("Create days upon outcome column")
     # Age in days upon outcome.
     df["days_upon_outcome"] = _compute_days_upon_outcome(df["age_upon_outcome"])
 
