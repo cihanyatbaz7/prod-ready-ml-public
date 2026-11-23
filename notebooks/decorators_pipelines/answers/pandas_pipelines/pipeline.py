@@ -2,7 +2,7 @@
 def rename_columns(df, func = str.lower, renames = {'dates':'date'}):
     return df.rename(columns=func).rename(columns = renames)
 
-def parse_dates(df, date_col = 'date'):  
+def parse_dates(df, date_col = 'date'):
     return df.assign(date = lambda df: pd.to_datetime(df[date_col]))
 
 def set_date_as_index(df, date_col='date'):
