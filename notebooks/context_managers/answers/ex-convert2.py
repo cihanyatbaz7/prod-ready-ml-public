@@ -1,6 +1,6 @@
-import contextlib        
+import contextlib
 import os
-import time 
+import time
 
 @contextlib.contextmanager
 def in_dir(path):
@@ -11,7 +11,7 @@ def in_dir(path):
 
 with in_dir('../../'):
     notebook_files = os.listdir('notebooks')
-    
+
 notebook_files
 
 @contextlib.contextmanager

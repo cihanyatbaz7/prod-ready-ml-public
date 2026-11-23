@@ -1,4 +1,4 @@
-import os 
+import os
 
 class InDir:
     def __init__(self, path):
@@ -14,5 +14,5 @@ class InDir:
 
 with InDir('../../'):
     notebook_files = os.listdir('notebooks')
-    
+
 notebook_files
