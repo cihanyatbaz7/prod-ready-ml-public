@@ -13,38 +13,38 @@ class Deck:
             for rank in self.ranks
         ]
         self.dealt_cards = []
-   
+
     def __len__(self):
         return len(self._cards)
-        
+
     def __str__(self):
         return f'Deck(suits={self.suits}, ranks={self.ranks})'
-    
+
     def __getitem__(self, position):
         return self._cards[position]
-    
+
     def __setitem__(self, ind, val):
         self._cards[ind] = val
-    
+
     def __add__(self, other):
         return self._cards + other._cards
 
     def __gt__(self, other):
         if self.__class__ == other.__class__:
             return self.num_j_q_k > other.num_j_q_k
-        
+
         return NotImplemented
 
     def __lt__(self, other):
         if self.__class__ == other.__class__:
             return self.num_j_q_k < other.num_j_q_k
-        
+
         return NotImplemented
-         
+
     def __eq__(self, other):
         if self.__class__ == other.__class__:
             return self.num_j_q_k == other.num_j_q_k
-        
+
         return NotImplemented
 
     @property
@@ -62,7 +62,7 @@ class Deck:
     @property
     def num_j_q_k(self):
         return self.num_j + self.num_q + self.num_k
-    
+
     def win(self, other):
         """Determine winner and print result. Returns winner name or None for draw."""
         # Primary comparison: total face cards
@@ -88,7 +88,7 @@ class Deck:
         # All counts equal - draw
         print(f"{self.name} reaches a draw with {other.name}")
         return None
-    
+
     def deal(self):
         return self._cards.pop()
 

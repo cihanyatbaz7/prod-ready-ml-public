@@ -1,3 +1,4 @@
+
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 
@@ -22,11 +23,24 @@ repos:
       - id: ruff-format
         types: [python, pyi]
 
+
   # Mypy: type checking via de versie in je uv-project
   - repo: local
     hooks:
       - id: mypy
         name: mypy
-        entry: uv run mypy --strict --ignore-missing-imports
+        entry: uv run mypy --strict --ignore-missing-imports src/animal_shelter
         language: system
+        pass_filenames: false
         types: [python]
+        always_run: true
+
+  # Run pytest before committing
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: uv run pytest
+        language: system
+        pass_filenames: false
+        always_run: true
