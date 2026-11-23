@@ -1,0 +1,32 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+repos:
+  # Algemene controles
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  # Ruff: linting en formattering
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.6
+    hooks:
+      - id: ruff
+        types: [python, pyi]
+        args: [--fix, --extend-select=I,E, --ignore=F401]
+
+      - id: ruff-format
+        types: [python, pyi]
+
+  # Mypy: type checking via de versie in je uv-project
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: uv run mypy --strict --ignore-missing-imports
+        language: system
+        types: [python]
