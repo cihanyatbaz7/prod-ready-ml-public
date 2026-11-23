@@ -1,3 +1,5 @@
+"""Functions to load and clean the animal shelter data."""
+
 import re
 
 import pandas as pd
@@ -10,6 +12,7 @@ def load_data(path):
     ----------
     path : str
         Path to data
+
     Returns
     -------
     df : pandas.DataFrame

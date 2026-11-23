@@ -1,13 +1,17 @@
+"""Feature engineering for the animal shelter data."""
+
 import numpy as np
 import pandas as pd
 
 
 def add_features(df):
     """Add some features to our data.
+
     Parameters
     ----------
     df : pandas.DataFrame
         DataFrame with data (see load_data)
+
     Returns
     -------
     with_features : pandas.DataFrame
@@ -26,10 +30,12 @@ def add_features(df):
 
 def _check_is_dog(animal_type):
     """Check if the animal is a dog, otherwise return False.
+
     Parameters
     ----------
     animal_type : pandas.Series
         Type of animal
+
     Returns
     -------
     result : pandas.Series
@@ -46,10 +52,12 @@ def _check_is_dog(animal_type):
 
 def _check_has_name(name):
     """Check if the animal is not called 'unknown'.
+
     Parameters
     ----------
     name : pandas.Series
         Animal name
+
     Returns
     -------
     result : pandas.Series
@@ -61,10 +69,12 @@ def _check_has_name(name):
 
 def _get_sex(sex_upon_outcome):
     """Determine if the sex was 'Male', 'Female' or unknown.
+
     Parameters
     ----------
     sex_upon_outcome : pandas.Series
         Sex and fixed state when coming in
+
     Returns
     -------
     sex : pandas.Series
@@ -79,10 +89,12 @@ def _get_sex(sex_upon_outcome):
 
 def _get_neutered(sex_upon_outcome):
     """Determine if an animal was intact or not.
+
     Parameters
     ----------
     sex_upon_outcome : pandas.Series
         Sex and fixed state when coming in
+
     Returns
     -------
     sex : pandas.Series
@@ -99,10 +111,12 @@ def _get_neutered(sex_upon_outcome):
 
 def _get_hair_type(breed):
     """Get hair type of a breed.
+
     Parameters
     ----------
     breed : pandas.Series
         Breed of animal
+
     Returns
     -------
     hair_type : pandas.Series
@@ -121,10 +135,12 @@ def _get_hair_type(breed):
 
 def _compute_days_upon_outcome(age_upon_outcome):
     """Compute age in days upon outcome.
+
     Parameters
     ----------
     age_upon_outcome : pandas.Series
         Age as string
+
     Returns
     -------
     days_upon_outcome : pandas.Series
