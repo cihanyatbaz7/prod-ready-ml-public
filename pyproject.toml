@@ -1,0 +1,26 @@
+[project]
+name = "animal-shelter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Fay Westendorp", email = "90827054+faywest@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=3.1.1",
+    "pyspark>=4.3.0",
+]
+
+[project.scripts]
+animal-shelter = "animal_shelter:main"
+
+[build-system]
+requires = ["uv_build>=0.8.17,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+    "ruff>=0.17.6",
+]
